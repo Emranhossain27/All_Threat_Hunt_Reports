@@ -42,6 +42,8 @@ DeviceNetworkEvents
 | project Timestamp, DeviceName, ActionType, RemoteIP, RemotePort, InitiatingProcessCommandLine
 | order by Timestamp desc
 ```
+<img width="1612" height="485" alt="image" src="https://github.com/user-attachments/assets/9ea12b80-cf98-4583-88e2-67e51b58a0a0" />
+
 
 **Findings:**  
 Several failed connection attempts were recorded, indicating possible **port probing** or **unauthorized connection attempts** from within the local network.
@@ -58,6 +60,9 @@ DeviceProcessEvents
 | project InitiatingProcessCommandLine, Timestamp
 | order by Timestamp desc
 ```
+
+<img width="1552" height="385" alt="image" src="https://github.com/user-attachments/assets/421af291-2fad-4c23-85d0-72856a2db6f6" />
+
 
 **Findings:**  
 Evidence confirmed that a **PowerShell script (`portscan.ps1`)** was executed on the host.  
@@ -119,16 +124,3 @@ This mirrors a real SOC workflow:
 - **Documentation:** Summarize findings in a formal incident report.  
 
 ---
-
-### 📁 Suggested Repo Structure
-```
-📂 Incident_Reports/
- ├── Sudden_Network_Slowdowns/
- │    ├── README.md
- │    └── evidence/
- │         └── screenshots.png
-```
-
-**Tags:** `#SOCAnalyst` `#ThreatHunting` `#PowerShell` `#KQL` `#MITRE` `#MicrosoftDefender`  
-> 🏆 Demonstrates real-world SOC analysis, detection, and incident reporting skills.
-
