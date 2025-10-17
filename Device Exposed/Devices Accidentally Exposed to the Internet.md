@@ -31,6 +31,7 @@ DeviceLogonEvents
 | summarize Attempts = count() by RemoteIP, DeviceName, ActionType, AccountName
 | order by Attempts desc
 ```
+<img width="1302" height="415" alt="image" src="https://github.com/user-attachments/assets/9d061acc-25a2-4993-9a7c-bb0e6cb65bb6" />
 
 ---
 
