@@ -16,11 +16,10 @@ I have noticed that there was a **brute-force attack** trying to gain access to 
 // 🔍 Detect multiple failed logon attempts on a specific device
 
 DeviceLogonEvents
-| where DeviceName == "windows-10-emra"           // Filter events from your device
 | where ActionType == "LogonFailed"
-| where TimeGenerated > ago(7d)                   // Only include failed logon attempts
+| where TimeGenerated >ago(7d)              // Only include failed logon attempts
 | summarize totalAttempts = count()               // Count total attempts
-          by AccountName, ActionType, RemoteIP, DeviceName   // Group by user and source IP
+          by AccountName, ActionType, RemoteIP,DeviceName     // Group by user and source IP
 | where totalAttempts >= 5                        // Show only suspicious repeated attempts
 | sort by totalAttempts desc                      // Optional: sort from highest to lowest
 ```
