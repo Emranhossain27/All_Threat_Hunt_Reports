@@ -11,7 +11,7 @@ Identify and alert when a single user logs into **multiple geographic regions** 
 ### **Data Source**
 - **Table:** `SigninLogs`  
 - **Workspace:** Azure Log Analytics  
-- **Detection Platform:** Microsoft Sentinel  
+- **Detection Platform:** Microsoft Sentinel, Microsoft Defender for Endpoint, Azure Portal 
 
 ---
 
@@ -31,6 +31,7 @@ SigninLogs
 | summarize totalImpossibleTravel = count() by UserPrincipalName, UserId
 | where totalImpossibleTravel > numberofLogon
 ```
+<img width="1513" height="782" alt="image" src="https://github.com/user-attachments/assets/d8d7ddc5-fdfb-4515-8979-761ada97797d" />
 
 ✅ **Explanation**
 - Looks back **7 days** for sign-ins.  
