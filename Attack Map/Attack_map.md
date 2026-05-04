@@ -20,7 +20,9 @@ All workbooks are scoped to the `law-cyber-range` workspace and use either:
 
 Visualizes **successful Azure AD sign-ins** (ResultType == 0) by source location and identity.
 
-![Logon Success Map](assets/logon-success-map.png)
+![Logon Success Map]
+<img width="1857" height="897" alt="image" src="https://github.com/user-attachments/assets/4f42ddd8-e6d7-481f-82b9-3ce4ed81ee13" />
+
 
 **KQL Query:**
 ```kql
@@ -34,6 +36,7 @@ SigninLogs
 | project Identity, Latitude, Longitude, City, Country, LoginCount,
     friendly_label = strcat(Identity, " - ", City, ", ", Country)
 ```
+<img width="1858" height="983" alt="image" src="https://github.com/user-attachments/assets/86a97720-451c-4114-aa5c-4c776b55bf99" />
 
 **What you see:** Legitimate (and suspicious) successful logins mapped globally. A large red cluster over a region with no expected user presence is an immediate red flag.
 
@@ -45,7 +48,9 @@ SigninLogs
 
 Visualizes **failed Azure AD sign-in attempts** (ResultType != 0), filtered to real user identities (excludes service principals containing `-`).
 
-![Logon Failure Map](assets/logon-failed-map.png)
+![Logon Failure Map]
+<img width="1870" height="907" alt="image" src="https://github.com/user-attachments/assets/d959ae7e-d7ae-49aa-ba28-e377e100b57c" />
+
 
 **KQL Query:**
 ```kql
@@ -60,6 +65,8 @@ SigninLogs
 | project Identity, Latitude, Longitude, City, Country, LoginCount,
     friendly_label = strcat(Identity, " - ", City, ", ", Country)
 ```
+<img width="1867" height="992" alt="image" src="https://github.com/user-attachments/assets/14611de1-6ace-4111-b649-b8a63c062e2e" />
+
 
 **What you see:** Credential stuffing, password spray, and brute-force attempts against Azure AD accounts. High volumes from unexpected countries are a strong indicator of automated attacks.
 
@@ -73,7 +80,9 @@ Visualizes **successful Azure resource write operations** (`WRITE` + `Success/Su
 
 > ⚠️ Only works with IPv4 addresses. GUID-format callers (service principals) are filtered out.
 
-![Azure Resource Creation Map](assets/azure-resource-creation-map.png)
+![Azure Resource Creation Map]
+<img width="1848" height="936" alt="image" src="https://github.com/user-attachments/assets/d4215e07-f197-4f7f-915c-63cb98d37fd7" />
+
 
 **KQL Query:**
 ```kql
@@ -96,6 +105,7 @@ AzureActivityRecords
     Longitude         = longitude,
     friendly_label    = strcat(split(Caller, "@")[0], " - ", cityname, ", ", countryname)
 ```
+<img width="1862" height="1002" alt="image" src="https://github.com/user-attachments/assets/a261b450-e7eb-4495-b5c4-d9676dfb928a" />
 
 **What you see:** Who is spinning up resources and from where. Unexpected countries creating resources = potential compromise or insider threat.
 
@@ -109,7 +119,9 @@ AzureActivityRecords
 
 Visualizes **failed local logon attempts** against virtual machines in the environment, sourced from `DeviceLogonEvents`. Uses the GeoIP watchlist to map `RemoteIP` to geographic coordinates.
 
-![VM Authentication Failures Map](assets/vm-auth-failures-map.png)
+![VM Authentication Failures Map]
+<img width="1861" height="922" alt="image" src="https://github.com/user-attachments/assets/982b60d4-ef61-4e6c-a03c-a0faebc79fae" />
+
 
 **KQL Query:**
 ```kql
@@ -125,6 +137,8 @@ DeviceLogonEvents
     Latitude          = latitude,
     Longitude         = longitude
 ```
+<img width="1857" height="957" alt="image" src="https://github.com/user-attachments/assets/a23b7543-e8cd-4d2d-85fd-90a6dfb18a9a" />
+
 
 **What you see:** RDP/SSH brute-force and password spray attempts directly against VMs, mapped by the attacking IP's real-world location. Unlike the Azure AD maps, these hits are coming at the OS level.
 
@@ -138,7 +152,9 @@ DeviceLogonEvents
 
 Visualizes **malicious flows** flagged by NSG analytics — specifically `FlowType == "MaliciousFlow"` from `AzureNetworkAnalytics_CL`. Uses the GeoIP watchlist to geo-enrich source IPs.
 
-![Malicious Inbound Traffic Map](assets/malicious-traffic-map.png)
+![Malicious Inbound Traffic Map]
+<img width="1816" height="921" alt="image" src="https://github.com/user-attachments/assets/29824278-521d-450c-b927-e72dfa4a1f24" />
+
 
 **KQL Query:**
 ```kql
@@ -162,6 +178,9 @@ MaliciousFlows
     country           = countryname,
     friendly_location = strcat(cityname, " (", countryname, ")")
 ```
+
+<img width="1860" height="987" alt="image" src="https://github.com/user-attachments/assets/5c6f8e55-7293-415e-8f42-b37ff8052e94" />
+
 
 **What you see:** Internet-sourced malicious traffic hitting the network perimeter flagged by Microsoft's threat intelligence feed. Protocols in the data include RDP (3389), SSH (22), HTTP (80), HTTPS (443), and others. The NSG rule `danger-allow-all-inbound` is intentional — this is a honeypot-style cyber range, not a production environment.
 
