@@ -61,7 +61,8 @@ DeviceProcessEvents
 | order by TimeGenerated desc
 ```
 
-![Advanced Hunting — Detection Query](assets/advanced-hunting-query.png)
+![Advanced Hunting — Detection Query](<img width="1786" height="906" alt="image" src="https://github.com/user-attachments/assets/1657fe6c-2c44-4b12-a50c-a2d5141fe0a0" />
+)
 
 ### Detection Rule Settings
 
@@ -105,7 +106,8 @@ Once the detection rule fired:
 
 ### VM State After Isolation
 
-![VM Isolated in MDE Portal](assets/vm-isolated-mde.png)
+![VM Isolated in MDE Portal](<img width="1456" height="706" alt="image" src="https://github.com/user-attachments/assets/a8ddbe5a-330b-4c79-a8de-01aec0db88b3" />
+)
 
 | Field | Value |
 |---|---|
