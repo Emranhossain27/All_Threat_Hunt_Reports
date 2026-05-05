@@ -61,8 +61,8 @@ DeviceProcessEvents
 | order by TimeGenerated desc
 ```
 
-![Advanced Hunting — Detection Query](<img width="1786" height="906" alt="image" src="https://github.com/user-attachments/assets/1657fe6c-2c44-4b12-a50c-a2d5141fe0a0" />
-)
+![Advanced Hunting — Detection Query]
+<img width="1786" height="906" alt="image" src="https://github.com/user-attachments/assets/1657fe6c-2c44-4b12-a50c-a2d5141fe0a0" />
 
 ### Detection Rule Settings
 
