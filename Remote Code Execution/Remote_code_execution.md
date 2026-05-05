@@ -106,8 +106,8 @@ Once the detection rule fired:
 
 ### VM State After Isolation
 
-![VM Isolated in MDE Portal](<img width="1456" height="706" alt="image" src="https://github.com/user-attachments/assets/a8ddbe5a-330b-4c79-a8de-01aec0db88b3" />
-)
+![VM Isolated in MDE Portal]
+<img width="1456" height="706" alt="image" src="https://github.com/user-attachments/assets/a8ddbe5a-330b-4c79-a8de-01aec0db88b3" />
 
 | Field | Value |
 |---|---|
